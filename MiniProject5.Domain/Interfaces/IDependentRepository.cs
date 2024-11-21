@@ -15,5 +15,6 @@ namespace MiniProject5.Domain.Interfaces
         Task<Dependent> UpdateDependent(Dependent dependent);
         Task<bool> DeleteDependent(int dependentno);
         Task SaveChangesAsync();
+        Task<IEnumerable<object>> GetDependentsByEmployeeAsync(int empNo);
     }
 }

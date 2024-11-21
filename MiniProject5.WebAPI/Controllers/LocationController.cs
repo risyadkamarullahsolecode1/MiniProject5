@@ -20,7 +20,13 @@ namespace MiniProject5.WebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Location>>> GetAllLocations()
         {
-            var Location = _locationRepository.GetAllLocations();
+            var Location = await _locationRepository.GetAllLocations();
+            return Ok(Location);
+        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<Location>>> GetlLocationById(int id)
+        {
+            var Location = await _locationRepository.GetLocationById(id);
             return Ok(Location);
         }
         [HttpPost]

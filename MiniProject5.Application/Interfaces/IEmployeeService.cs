@@ -1,4 +1,5 @@
 ﻿using MiniProject5.Application.Dtos;
+using MiniProject5.Application.Dtos.Search;
 using MiniProject5.Application.Helpers;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,8 @@ namespace MiniProject5.Application.Interfaces
         Task RegisterEmployeeAsync(EmployeeRegistrationDto employeeDto);
         Task UpdateEmployeeAsync(int empNo, UpdateDto updateDto);
         Task DeactivateEmployeeAsync(int empNo, string reason);
+        Task<object> GetFilteredSortedEmployeesAsync(SearchDto searchDto);
+        Task<EmployeeWithDepartmentDto> GetEmployeeWithDepartmentByIdAsync(int empNo);
+        Task AddDependentAsync(int empNo, DependentDto dependentDto);
     }
 }

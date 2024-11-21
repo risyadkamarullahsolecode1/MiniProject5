@@ -8,7 +8,7 @@ namespace MiniProject5.Application.Dtos
 {
     public class EmployeeRegistrationDto
     {
-        public int empNo { get; set; }
+        public int? EmpNo { get; set; }
         public string Fname { get; set; } = null!;
         public string Lname { get; set; } = null!;
         public string Sex { get; set; }

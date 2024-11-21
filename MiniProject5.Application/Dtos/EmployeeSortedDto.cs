@@ -8,6 +8,7 @@ namespace MiniProject5.Application.Dtos
 {
     public class EmployeeSortedDto
     {
+        public int? EmpNo { get; set; }
         public string Fname { get; set; } = null!;
         public string? Position { get; set; }
         public string? Deptname { get; set; }

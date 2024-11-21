@@ -29,7 +29,7 @@ namespace MiniProject5.Infrastucture.Data.Repository
         }
         public async Task<Department> AddDepartment(Department department)
         {
-            _context.Departments.Add(department);
+            await _context.Departments.AddAsync(department);
             await _context.SaveChangesAsync();
             return department;
         }
@@ -66,6 +66,14 @@ namespace MiniProject5.Infrastucture.Data.Repository
             return await _context.Employees
                 .Where(e => e.Empno == department)
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<Employee>> GetEmployee(int deptNo)
+        {
+            var employeeInDept = await _context.Employees
+                .Where(e => e.Deptno == deptNo)
+                .ToListAsync();
+            return employeeInDept;
         }
     }
 }

@@ -13,6 +13,6 @@ namespace MiniProject5.Application.Dtos
         public string? Sex { get; set; }
         public DateOnly Dob { get; set; }
         public string Relationship { get; set; } = null!;
-        public int empNo { get; set; }
+        public int EmpNo { get; set; }
     }
 }

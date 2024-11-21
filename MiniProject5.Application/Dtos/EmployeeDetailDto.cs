@@ -8,6 +8,7 @@ namespace MiniProject5.Application.Dtos
 {
     public class EmployeeDetailDto
     {
+        public int? EmpNo { get; set; }
         public string EmployeeName { get; set; }
         public string Address { get; set; }
         public string PhoneNumber { get; set; }

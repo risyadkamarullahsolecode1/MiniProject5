@@ -14,5 +14,7 @@ namespace MiniProject5.Domain.Interfaces
         Task<Project> AddProject(Project project);
         Task<Project> UpdateProject(Project project);
         Task<bool> DeleteProject(int projNo);
+        Task<Department> GetDepartmentAsync(int projNo);
+        Task<IEnumerable<Project>> GetProjectsByDepartmentId(int deptNo);
     }
 }

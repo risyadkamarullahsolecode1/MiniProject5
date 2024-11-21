@@ -17,9 +17,8 @@ public partial class Project
     [Column("deptno")]
     public int? Deptno { get; set; }
 
-    [Column("projectlocation")]
-    [StringLength(100)]
-    public string? Projectlocation { get; set; }
+    public int? Projectlocation { get; set; }
+    public virtual Location? LocationNavigation { get; set; }
 
     [ForeignKey("Deptno")]
     [InverseProperty("Projects")]

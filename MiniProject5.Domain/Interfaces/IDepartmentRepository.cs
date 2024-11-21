@@ -15,5 +15,6 @@ namespace MiniProject5.Domain.Interfaces
         Task<Department> UpdateDepartment(Department department);
         Task<bool> DeleteDepartment(int deptNo);
         Task<Employee> GetManagerByDeptNoAsync(int deptNo);
+        Task<IEnumerable<Employee>> GetEmployee(int deptNo);
     }
 }

@@ -1,4 +1,5 @@
-﻿using MiniProject5.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using MiniProject5.Domain.Entities;
 using MiniProject5.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -24,12 +25,13 @@ namespace MiniProject5.Infrastucture.Data.Repository
 
         public async Task<Employee> GetEmployeeById(int empNo)
         {
-            return await _context.Employees.FindAsync(empNo);
+            return await _context.Employees
+                .FirstOrDefaultAsync(e => e.Empno == empNo);
         }
 
         public async Task<Employee> AddEmployee(Employee employee)
         {
-            _context.Employees.Add(employee);
+            await _context.Employees.AddAsync(employee);
             await _context.SaveChangesAsync();
             return employee;
         }

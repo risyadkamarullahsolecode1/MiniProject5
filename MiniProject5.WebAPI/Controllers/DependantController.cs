@@ -57,5 +57,11 @@ namespace MiniProject5.WebAPI.Controllers
             if (!deleted) return NotFound();
             return Ok("department has been deleted !");
         }
+        [HttpGet("dependent/{empNo}")]
+        public async Task<IActionResult> GetDependentEmployee(int empNo)
+        {
+            var res = await _dependentRepository.GetDependentsByEmployeeAsync(empNo);
+            return Ok(res);
+        }
     }
 }

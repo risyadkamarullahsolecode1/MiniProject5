@@ -54,5 +54,25 @@ namespace MiniProject5.Infrastucture.Data.Repository
         {
             await _context.SaveChangesAsync().ConfigureAwait(false); 
         }
+
+        public async Task<IEnumerable<object>> GetDependentsByEmployeeAsync(int empNo)
+        {
+            var employeeDependents = await _context.Dependents
+                .Where(d => d.Empno == empNo)
+                .Include(d => d.EmpnoNavigation) // Include Employee navigation property
+                .Select(d => new
+                {
+                    DependentNo = d.Dependentno,
+                    DependentName = d.Name,
+                    Relationship = d.Relationship,
+                    Sex = d.Sex,
+                    DateOfBirth = d.Dob,
+                    EmployeeNo = d.Empno, // Ensure this matches empNo
+                    EmployeeName = $"{d.EmpnoNavigation.Fname} {d.EmpnoNavigation.Lname}"
+                })
+                .ToListAsync();
+
+            return employeeDependents;
+        }
     }
 }

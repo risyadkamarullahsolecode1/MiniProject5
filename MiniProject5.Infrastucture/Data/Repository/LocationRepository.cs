@@ -22,6 +22,10 @@ namespace MiniProject5.Infrastucture.Data.Repository
         {
             return await _context.Locations.ToListAsync();
         }
+        public async Task<Location> GetLocationById(int id)
+        {
+            return await _context.Locations.FindAsync(id);
+        }
         public async Task<Location> AddLocation(Location location)
         {
             _context.Locations.Add(location);

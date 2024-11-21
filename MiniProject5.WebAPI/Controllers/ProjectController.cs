@@ -55,5 +55,12 @@ namespace MiniProject5.WebAPI.Controllers
             if (!deleted) return NotFound();
             return Ok("project has been deleted !");
         }
+
+        [HttpGet("{projNo}/department")]
+        public async Task<IActionResult> GetDepartmentAsync(int projNo)
+        {
+            var res = await _projectRepository.GetDepartmentAsync(projNo);
+            return Ok(res);
+        }
     }
 }

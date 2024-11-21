@@ -34,7 +34,7 @@ namespace MiniProject5.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Department>> AddDepartment(Department department)
+        public async Task<IActionResult> AddDepartment(Department department)
         {
             var createdDepartment = await _departmentRepository.AddDepartment(department);
             return Ok(createdDepartment);
@@ -65,6 +65,13 @@ namespace MiniProject5.WebAPI.Controllers
                 return NotFound($"No manager found for department number {deptNo}");
             }
             return Ok(manager);
+        }
+
+        [HttpGet("{deptNo}/employees")]
+        public async Task<IActionResult> GetEmployee(int deptNo)
+        {
+            var res = await _departmentRepository.GetEmployee(deptNo);
+            return Ok(res);
         }
     }
 }
